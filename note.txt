@@ -1,0 +1,23 @@
+DEX Contracts
+
+BicornFactory: 0x0841BD0B734E4F5853f0dD8d7Ea041c241fb0Da6
+    The BicornFactory is the primary DEX contract which is used to create and track all pairs created on the ApeSwap protocol. When a new pair needs to be created, this contract deploys a completely new pair contract specifically for these tokens and notes the address for future lookup.
+
+BicornRouter: 0x2BD0A78b17ddcea9E3412769De03e6825fCfC019 
+    The BicornRouter is an external, non-value holding, contract which manages different sets of interactions with the ApeFactory related to adding/removing liquidity and swapping tokens. Because this contract holds no value it can be upgraded without needing to redeploy the ApeFactory. 
+
+
+
+
+
+Farm Contracts
+
+BicornToken: 0x603c7f932ED1fc6575303D8Fb018fDCBb0f39a95 
+    BicornToken represents the native token of the BicornSwap protocol. This token is distributed to farmers who stake tokens which are recognized by Bicorn's farm. 
+
+MasterBicorn: 0x5c8D727b265DBAfaba67E050f2f739cAeEB4A6F9
+    The MasterBicorn contract represents the main farm contract which is in charge of distributing BICORN to farmers staking on the ApeSwap protocol. 
+
+Timelock: 0x2F07969090a2E9247C761747EA2358E5bB033460
+    The Timelock acts as the owner of the MasterApe to limit how fast owner functions can be called on the protocol. A transaction must first be queued in this contract which emits an event that users can evaluate. After a set delay, this tx can be executed which updates a setting on the MasterApe. The Timelock is primarily used to manage the farm by adding new staking tokens and updating their reward weight. 
+
